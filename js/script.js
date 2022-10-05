@@ -1,4 +1,4 @@
-/* nombre = prompt("Como te llamas?");
+nombre = prompt("Como te llamas?");
 let fecha = parseInt(prompt("Hola "+nombre+"! por favor escribe en que año naciste."));
 let currentTime = new Date()
 let edades = currentTime.getFullYear()
@@ -76,4 +76,4 @@ if (sumaNumeros >=18){
     }else{
     alert("No eres mayor de edad. No puedes comprar nuestros productos ya que podrían ser tóxicos para menores de edad.");
     
-    } */
+    }
