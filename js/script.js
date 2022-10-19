@@ -1,79 +1,68 @@
-nombre = prompt("Como te llamas?");
-let fecha = parseInt(prompt("Hola "+nombre+"! por favor escribe en que año naciste."));
-let currentTime = new Date()
-let edades = currentTime.getFullYear()
-menu = "";
-let sumaNumeros = edades - fecha;
+//CREO LA CLASE DE PRODUCTOS
 
-ProductosA= "PPL Eater (Púrpura) + Blue Ruin (Azul)";
-ProductosB= "Riot (Naranja) + Steal My Sunshine (Amarillo)";
-ProductosC= "Pink Puff (Rosa Pastel) + Stoned Pony (Lila Pastel)";
+class productos{
+    constructor(id,color,tintura,precio,stock){
+        this.id = id;
+        this.color = color;
+        this.tintura = tintura;
+        this.precio = precio;
+        this.stock = stock;
+    }
 
+    //HAGO UN METODO PARA RESTAR STOCK AL VENDER + SUMAR IVA EN LA COMPRA
+    restaStock(){
+        this.stock = this.stock - 1;
+        console.log("Se ha actualizado el stock")
+    }
 
-const CostoProductosA = 122;
-const CostoProductosB = 118;
-const CostoProductosC = 202;
-
-function ivaA(peso){
-    let impuesto = ((CostoProductosA * .21)+CostoProductosA);
-    return impuesto;
+    sumaIva(){
+        this.precio = (this.precio) + (this.precio * 0.21)
+    }
 }
 
-function ivaB(peso){
-    let impuesto = ((CostoProductosB * .21)+CostoProductosB);
-    return impuesto;
+//CREAMOS LOS PRODUCTOS
+
+const prouducto0 = new productos(0,"Rojo","'Rock Lobster'",20,25);
+const prouducto1 = new productos(1,"Amarillo","'Steal My Sunshine'",18,10);
+const prouducto2 = new productos(2,"Naranja","'Riot'",18,17);
+const prouducto3 = new productos(3,"Púrpura","'PPL Eater'",19,22);
+const prouducto4 = new productos(4,"Azul","'Blue Ruin'",18,14);
+const prouducto5 = new productos(5,"Rosa pastel","'Pink Puff'",25,20);
+const prouducto6 = new productos(6,"Celeste pastel","'Sky High'",25,15);
+const prouducto7 = new productos(7,"Verde pastel","'Wondermint'",25,10);
+
+const misProductos = [prouducto0, prouducto1,prouducto2,prouducto3,prouducto4,prouducto5,prouducto6,prouducto7];
+
+//MENSAJE EN PANTALLA PARA ELEGIR PRODUCTO
+
+let mensajePantalla = "Por favor, elija el número de su producto a llevar:\n"
+
+for (elemento of misProductos) {
+    mensajePantalla += `${elemento.id} - ${elemento.color} - ${elemento.tintura} a $${elemento.precio}\n`
 }
 
-function ivaC(peso){
-    let impuesto = ((CostoProductosC * .21)+CostoProductosC);
-    return impuesto;
+let opcionUser = parseInt(prompt(mensajePantalla));
+
+//LUEGO DE ELEGIR EL PRODUCTO, QUE NOS MUESTRE EN PANTALLA LO QUE HA ELEGIDO - CON EL METODO FIND COMPARO EL VALOR DADO POR EL USER CON lA PROPIEDAD DEL OBJETO SELECCIONADA
+
+const productoElegido = misProductos.find(elemento => elemento.id == opcionUser);
+
+
+alert(`Has elegido ${productoElegido.color} - ${productoElegido.tintura} a $${productoElegido.precio}`)
+
+//PREGUNTAR SI DESEA COMPRAR CON TARJETA CON UN RECARGO DEL 21%
+let opcion = prompt(`Elija el medio de pago.\nSi ud paga con tarjeta se informa que se le tendrá que agregar al valor final el 21% correspondiente al IVA\n1- Efectivo\n2- Tarjeta`);
+
+if (opcion == 1) {
+    alert(`Muchas gracias por su compra, disfrute su ${productoElegido.color} ${productoElegido.tintura}`);
+} else if(opcion == 2) {
+    productoElegido.sumaIva();
+    alert("Gracias, disfrute de su compra. El precio total mas IVA es de: $" +productoElegido.precio);
+}else{
+    alert("Seleccione nuevamente, no se ha procesado la compra.")
 }
 
 
-if (sumaNumeros >=18){
-    console.log("Excelente! tienes "+sumaNumeros+" años, tienes edad suficiente para comprar y usar nuestros productos.");
-    alert("Ya eres mayor de edad, puedes comprar nuestros productos.")
-    let menu = prompt("Gracias "+nombre+"! Como bienvenida a nuestro sitio te damos a elegir una gama de colores con la que te identifiques y te daremos dos colores de tintura en promocion!\n 1. Colores fríos.\n 2. Colores cálidos.\n 3. Colores pasteles.\n Presiona S para salir.");
-    
-    while (menu !="S"){
-    switch(menu){
-    case"1":
-    alert("Tus productos son "+ProductosA+". Tiene un costo de "+CostoProductosA);
-    let compraA = prompt("Escribe C para comprar "+ProductosA);
-    if (compraA ==="C"){
-        let totalA = ivaA(CostoProductosA);
-        alert("Precio total es de $"+totalA);
-        }
-    else{
-    compraA=alert("Si lo compras? Escribe C")
-    }
-    break;
-    case"2":
-    alert("Tus productos son "+ProductosB+". Tiene un costo de "+CostoProductosB);
-    let compraB = prompt("Escribe C para comprar "+ProductosB);
-    if (compraB ==="C"){
-        let totalB = ivaB(CostoProductosB);
-        alert("Precio total es de $"+totalB);
-    }else{
-    compraB=alert("Si lo compras? Escribe C")
-    } break;
-    case"3":
-    alert("Tus productos son "+ProductosC+". Tiene un costo de "+CostoProductosC);
-    let compraC = prompt("Escribe C para comprar "+ProductosC);
-    if (compraC ==="C"){
-        let totalC = ivaC(CostoProductosC);
-        alert("Precio total es de $"+totalC);
-    }else{
-    compraB=alert("Si lo compras? Escribe C")
-    } break;
-    default:
-    alert("Número inválido. Escribe solo un número para elegir la gama de colores con la que te identifiques y te daremos dos colores de tintura en promocion!\n 1. Colores fríos.\n 2. Colores cálidos.\n 3. Colores pasteles.\n Presiona S para salir.");
-    break;
-    }
-    menu = prompt("Gracias "+nombre+" elige una gama de colores con la que te identifiques y te daremos dos colores de tintura en promocion!\n 1. Colores fríos\n 2. Colores cálidos.\n 3. Colores pasteles.\n Presiona S para salir.");
-    }
-    
-    }else{
-    alert("No eres mayor de edad. No puedes comprar nuestros productos ya que podrían ser tóxicos para menores de edad.");
-    
-    }
+productoElegido.restaStock();
+
+console.log(`Actualmente quedan ${productoElegido.stock} unidades de ${productoElegido.color}-${productoElegido.tintura}`);
