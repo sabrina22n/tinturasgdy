@@ -26,3 +26,25 @@
     margin-bottom: 50px;
 }
 
+.paralaxShop {
+    background-image: url("../images/shop.jpeg");
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
+}
+
+.paralaxColores {
+    background-image: url("../images/colores.png");
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
+}
+
+
+
