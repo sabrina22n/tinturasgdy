@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,98 +9,103 @@
     <link rel="stylesheet" href="./styles/estilos.css">
     <title>Tinturas GDY</title>
 </head>
-
 <body>
     <header>
-        <nav class="navbar">
-            <div class="container-fluid d-flex justify-content-center">
-                <span class="navbar-brand mb-0 h1">GOOD DYE YOUNG</span>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div>
+                    <a href="./index.html"><img src="./images/logo.jpeg" alt="Logo GDY" title="logo GDY" height="50px" /></a>
+                </div>
+                <a class="navbar-brand" href="./index.html">GOOD DYE YOUNG</a>
+                <a class="navbar-brand d-none" href="./index.html">GDY</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">INICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/shop.html">SHOP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/colores.html">COLORES</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#"><img src="./images/carrito.png" alt="Carrito de compras" title="Carrito de compras" height="50px" /></a>
+                </div>
             </div>
         </nav>
     </header>
     <main>
-        <div class="container-fluid">
-            <img class="banner" src="./images/banner.png" />
-        </div>
-        <section class="container carouselcomplete">
-            <div class="row">
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-                            aria-label="Slide 5"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
-                            aria-label="Slide 6"></button>
+        <img class="container-fluid imgInicio" src="./images/home.jpeg" alt="banner GDY"></img>
+        <img class="container-fluid imgInicio d-none" src="./images/mobilehome.jpeg" alt="banner GDY"></img>
+        <section>
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="./images/crueltyfree.png" title="Cruelty Free" height="120px"></img>
+                        <h4>Cruelty free</h4>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="./images/amarillo2.png" class="d-block w-100" alt="Tintura amarilla">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Steal My Sunshine</h5>
-                                <p>Amarillo</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/riot2.png" class="d-block w-100" alt="Tintura Naranja">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Riot</h5>
-                                <p>Naranja</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/purpura2.png" class="d-block w-100" alt="Tintura Purpura">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>PPL Eater</h5>
-                                <p>Púrpura</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/azul2.png" class="d-block w-100" alt="Tintura Azul">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Blue Ruin</h5>
-                                <p>Azul</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/pink2.png" class="d-block w-100" alt="Tintura Rosa">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Pink Puff</h5>
-                                <p>Rosa</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./images/lila2.png" class="d-block w-100" alt="Tintura Lila">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Stoned Pony</h5>
-                                <p>Lila</p>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        <img src="./images/vegan.png" title="vegan" height="120px"></img>
+                        <h4>Vegan</h4>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <div class="col-md-4">
+                        <img src="./images/quimicos.png" title="Sin quimicos" height="120px"></img>
+                        <h4>Libre de químicos</h4>
+                    </div>
                 </div>
             </div>
         </section>
+        <section>
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>EXPRESS<br>YOURSELF</h3>
+                        <p>Good Dye Young está dedicado a crear una comunidad a través de la propia-exploración, del color y la felicidad de ser quién eres. </p>
+                    </div>
+                    <div class="col-md-8">
+                        <img class="img-fluid" src="./images/home2.png" title="comunidad GDY"></img>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="paralax">
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="./images/home3.jpeg" title="productos"></img>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>15-24+ lavados</h5>
+                        <h3>SEMI-PERM</h3>
+                        <h5>Pigmentos profesionales ultra brillantes.</h5>
+                        <p>+ Fórmula cremosa vegana y libre de crueldad animal
+                            <br>
+                            + Infundido botánicamente con extracto de girasol natural
+                            <br>
+                            + Sin amoníaco, sin formaldehído, sin peróxido, sin PPD</p>
+                        <button>COMPRAR</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            © Derechos reservados - Sabrina Nuñez CoderHouse
+        </footer>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/scriptinicio.js"></script>
 </body>
-
 </html>

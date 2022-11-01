@@ -10,22 +10,19 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: #b8c0ff;
-}
-.navbar {
-    font-family: 'Bowlby One', cursive;
-    background-color: #b8c0ff;
+.imgInicio {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
-.banner {
-    width: 100%;
+.paralax {
+    background-image: url("../images/productos.jpeg");
     height: 100vh;
-}
-
-.carouselcomplete {
-    width: 620px;
-    height: 800px;
-    color: black;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
 }
 
