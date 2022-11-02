@@ -111,6 +111,30 @@ footer {
     border-bottom: 3px solid #000000;
 }
 
+.div1 {
+    position: relative;
+}
+
+.imgHover{
+    object-fit: cover;
+}
+
+.imgCard{
+    object-fit: cover;
+}
+
+.div1 .div2 {
+    position: absolute;  
+    top: 0;  
+    left: 0;
+    opacity: 0;
+    transition: .5s;
+}
+
+.div1:hover .div2 {
+    opacity: 1;
+}
+
 .btnShop {
     background-color: #000000;
     color: #FFFF;
