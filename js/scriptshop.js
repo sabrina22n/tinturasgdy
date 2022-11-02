@@ -54,17 +54,17 @@ function tarjetasProductos () {
     stockProductos.forEach((producto) => {
     tarjetas.innerHTML += `
     <div class="col">
-            <div class= "card card-body-shop"
+            <div class= "card card-body-shop borderimg"
                 <div class="card-body">
                     <img src="${producto.foto}" class="card-img-top" alt="tintura"></img>
                     <h2 class="card-title">
                             ${producto.color}
                     </h2>
                     <p class="card-text">
-                            ${producto.nombre}
+                            ${producto.nombre}<br>$${producto.precio}
                     </p>
                     <button id="btn${producto.id}" class="btn btnShop">
-                            COMPRAR:  $${producto.precio}
+                            COMPRAR
                     </button>
                 </div>
             </div>
