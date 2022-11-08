@@ -1,5 +1,4 @@
-//CREO EL STOCK DE PRODUCTOS
-
+//creo el array con el stock de productos
 const stockProductos = [
         {
                 id: 1, color: "Rojo", precio: 2800, nombre: "'Rock Lobster'", foto: "../images/rojo1.jpeg", fotohover: "../images/rojo.png"
@@ -39,19 +38,19 @@ const stockProductos = [
         },
 ];
 
-//TRAIGO DEL HTML MIS DIVS PARA USARLOS, Y GUARDARLOS EN EL LOCAL STORAGE
+//array vacio para carrito
+let carrito = [];
 
-const productos = stockProductos.map((prod) => prod.color)
-console.log(productos)
-const carrito = JSON.parse(localStorage.getItem("Carrito")) || []
-
+//TOMO LAS CARDS DEL HTML
 const tarjetas = document.getElementById("tarjetas")
-const divCarrito = document.getElementById("carrito")
+
+//TOMO EL BOTON PARA FINALIZAR COMPRA
+const btnFC = document.getElementById("btnShop");
 
 //CREO LAS TARJETAS Y ARMO LA FUNCION PARA AGREGAR AL CARRITO
 
 function tarjetasProductos() {
-        stockProductos.forEach((producto) => {
+        for (const producto of stockProductos){
                 tarjetas.innerHTML += `
 <div class="col">
         <div class= "card card-body-shop borderimg"
@@ -77,26 +76,24 @@ function tarjetasProductos() {
         </div>
 </div>
 `;
-        });
+        };
         stockProductos.forEach((producto) => {
                 document.getElementById(`btn${producto.id}`).addEventListener("click", function () {
-                        agregarAlCarrito(producto);
+                        agregarCarrito(producto);
                 });
         });
 }
-
 tarjetasProductos();
 
-function agregarAlCarrito(producto) {
-        let existe = carrito.some((productoSome) => productoSome.id === producto.id);
-        if (existe === false) {
-                producto.cantidad = 1;
-                carrito.push(producto);
-        } else {
-                let findProd = carrito.find((findProducto) => findProducto.id === producto.id);
-                findProd.cantidad++
-        }
-        alert("Has agregado al carrito " + producto.color)
-        let carritoAlmacenado = JSON.stringify(carrito);
-        localStorage.setItem("Carrito", carritoAlmacenado);
+
+//cargar carrito
+function agregarCarrito(productoComprar) {
+        carrito.push(productoComprar);
+        //guardar en json y luego al localstorage
+        const jsonStorage = (clave, valor) => { localStorage.setItem(clave, valor) };
+        jsonStorage(`listaProductos`, JSON.stringify(productoComprar));
+        console.log(jsonStorage)
+        //traer del storage y luego al json
+        const storageJson = JSON.parse(localStorage.getItem(`listaProductos`));
+        console.log(storageJson);
 }

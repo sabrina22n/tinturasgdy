@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,14 @@
     <link rel="stylesheet" href="../styles/estilos.css">
     <title>Shop - GDY</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <div>
-                    <a href="../index.html"><img src="../images/logo.jpeg" alt="Logo GDY" title="logo GDY" height="50px" /></a>
+                    <a href="../index.html"><img src="../images/logo.jpeg" alt="Logo GDY" title="logo GDY"
+                            height="50px" /></a>
                 </div>
                 <a class="navbar-brand ms-3" href="../index.html">GOOD DYE YOUNG</a>
                 <a class="navbar-brand ms-3 d-none" href="../index.html">GDY</a>
@@ -36,7 +39,8 @@
                     </ul>
                 </div>
                 <div>
-                    <a href="#"><img src="../images/carrito.png" alt="Carrito de compras" title="Carrito de compras" height="50px" /></a>
+                    <a href="#"><img src="../images/carrito.png" alt="Carrito de compras" title="Carrito de compras"
+                            height="50px" /></a>
                 </div>
             </div>
         </nav>
@@ -57,7 +61,8 @@
                             <br>
                             + Infundido botánicamente con extracto de girasol natural
                             <br>
-                            + Sin amoníaco, sin formaldehído, sin peróxido, sin PPD</p>
+                            + Sin amoníaco, sin formaldehído, sin peróxido, sin PPD
+                        </p>
                         <button class="botones btn btn-dark" onclick="location.href='./shop.html'">COMPRAR</button>
                     </div>
                 </div>
@@ -66,8 +71,27 @@
         <section class="mt-5 mb-5">
             <div class="container">
                 <div id="tarjetas" class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4"></div>
+                <!-- las cards productos -->
             </div>
-            <div id="carrito" class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4"></div>
+            <!-- <div id="carrito" class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4"></div> -->
+        </section>
+        <section class="carrito">
+            <h2>Tu Compra</h2>
+            <!-- el carrito tabla -->
+            <table id="table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Basurero</th>
+                    </tr>
+                </thead>
+                <tbody id="tBody">
+                    <!-- carga tabla productos carrito -->
+                </tbody>
+            </table>
+            <h4 id="totalPagar"></h4>
+            <button id="btnShop" class="btn btn-ligth">Finalizar compra</button>
         </section>
         <section>
             <div class="container mt-5 mb-5">
@@ -96,4 +120,5 @@
         crossorigin="anonymous"></script>
     <script src="../js/scriptshop.js"></script>
 </body>
+
 </html>
