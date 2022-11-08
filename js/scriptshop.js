@@ -45,12 +45,12 @@ let carrito = [];
 const tarjetas = document.getElementById("tarjetas")
 
 //TOMO EL BOTON PARA FINALIZAR COMPRA
-const btnFC = document.getElementById("btnShop");
+const btnShop = document.getElementById("btnShop");
 
 //CREO LAS TARJETAS Y ARMO LA FUNCION PARA AGREGAR AL CARRITO
 
 function tarjetasProductos() {
-        for (const producto of stockProductos){
+        for (const producto of stockProductos) {
                 tarjetas.innerHTML += `
 <div class="col">
         <div class= "card card-body-shop borderimg"
@@ -96,4 +96,26 @@ function agregarCarrito(productoComprar) {
         //traer del storage y luego al json
         const storageJson = JSON.parse(localStorage.getItem(`listaProductos`));
         console.log(storageJson);
+
+document.getElementById("tBody").innerHTML += `
+<tr>
+    <td>${productoComprar.nombre}</td>
+    <td>${productoComprar.precio}</td>
+    <td><button id='btn${
+        productoComprar.id
+    }' class="btn btn-ligth"><i class="fa-solid fa-trash-can"></i></button></td>
+</tr>
+`;
+let totalCarrito = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
+document.getElementById("totalPagar").innerText = `Total a pagar c/IVA incluido: $ ${totalCarrito * 1.21}`;
+}
+
+
+btnShop.onclick = () => {
+        carrito = [];
+        document.getElementById("tBody").innerHTML = "";
+        document.getElementById("totalPagar").innerText = "";
+        localStorage.clear();
+        sessionStorage.clear();
+        console.clear();
 }
