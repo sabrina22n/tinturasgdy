@@ -1,6 +1,7 @@
 let productosJSON = [];
+let dolarCompra;
 let totalCarrito;
-let botonFinalizar = document.getElementById("finalizar");
+const carritoSection = document.querySelector(`#carrito`)
 let carrito = JSON.parse(localStorage.getItem("elcarrito")) || [];
 if (carrito.length != 0) {
         cargarLocalStorage();
@@ -9,9 +10,6 @@ obtenerDolar();
 
 //TOMO LAS CARDS DEL HTML
 const tarjetas = document.getElementById("tarjetas")
-
-//TOMO EL BOTON PARA FINALIZAR COMPRA
-const btnShop = document.getElementById("btnShop");
 
 //LUXON
 const DateTime = luxon.DateTime;
@@ -33,7 +31,7 @@ function cargarLocalStorage() {
                         <td>${producto.nombre.toUpperCase()}</td>
                         <td>$${producto.precio}</td>
                         <td>${producto.cantidad}</td>
-                        <td><button id='btnBorrar${producto.id}' class="btn btn-ligth"><i class="fa-solid fa-trash-can"></i></button></td>
+                        <td><button id='btnBorrar${producto.id}' class="btn"><i class="fa-solid fa-trash-can"></i></button></td>
                         </tr>
                         `;
                 let totalCarrito = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
@@ -52,7 +50,7 @@ function tarjetasProductos() {
                 <div class="card-body">
                         <div class="div1">
                                 <div class="images">
-                                <img src="${producto.foto}" class="card-img-top imgCard" alt="tintura"></img>
+                                <img src="${producto.foto}" class="card-img-top imgCard" alt="${producto.nombre}"></img>
                                 </div>
                         <div class="div2">
                                 <img class="imgHover" src="${producto.fotohover}"></img>
@@ -64,7 +62,8 @@ function tarjetasProductos() {
                 <p class="card-text">
                         ${producto.nombre}<br>$${producto.precio}
                 </p>
-                <button id="btn${producto.id}" class="btn btnShop">
+                <p class="card-text">U$D ${(producto.precio/dolarCompra).toFixed(2)}</p>
+                <button id='btnComprar${producto.id}' class="btn btnShop">
                         COMPRAR
                 </button>
                 </div>
@@ -138,9 +137,10 @@ function cargarCarrito() {
         carrito.forEach((productoComprar) => {
                 document.getElementById("tBody").innerHTML += `
         <tr>
-        <td>${productoComprar.nombre}</td>
-        <td>${productoComprar.precio}</td>
-        <td><button id='btnBorrar${productoComprar.id}' class="btn btn-ligth"><i class="fa-solid fa-trash-can"></i></button></td>
+                <td>${productoComprar.nombre}</td>
+                <td>${productoComprar.precio}</td>
+                <td>${productoComprar.cantidad}</td>
+                <td><button id='btnBorrar${productoComprar.id}' class="btn"><i class="fa-solid fa-trash-can"></i></button></td>
         </tr>
         `;
                 let totalCarrito = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);

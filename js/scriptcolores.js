@@ -44,6 +44,7 @@ const coloresPastel = [
 const coloresV = document.getElementById("coloresV")
 const coloresP = document.getElementById("coloresP")
 
+
 coloresVividos.forEach((color) => {
                 coloresV.innerHTML += `
                 <div class="divColores">
@@ -62,6 +63,4 @@ coloresVividos.forEach((color) => {
 `;
 });
 
-let divColores = document.getElementsByClassName("divColores");
-coloresV.innerHTML.style=“background:${coloresVividos.background}“ */
-
+ */
