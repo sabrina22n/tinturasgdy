@@ -1,0 +1,110 @@
+[
+    {
+            "id": 1, 
+            "color": "Rojo", 
+            "precio": 2800, 
+            "nombre": "'Rock Lobster'", 
+            "foto": "../images/rojo1.jpeg", 
+            "fotohover": "../images/rojo.png",
+            "cantidad": 1
+    },
+    {
+            "id": 2, 
+            "color": "Fucsia", 
+            "precio": 2800, 
+            "nombre": "'EX-Girl'", 
+            "foto": "../images/fucsia1.jpeg", 
+            "fotohover": "../images/fucsia.jpeg",
+            "cantidad": 1
+    },
+    {
+            "id": 3, 
+            "color": "Naranja", 
+            "precio": 2800, 
+            "nombre": "'Riot'", 
+            "foto": "../images/riot2.png", 
+            "fotohover": "../images/riot.png",
+            "cantidad": 1
+    },
+    {
+            "id": 4, 
+            "color": "Amarillo", 
+            "precio": 2800, 
+            "nombre": "'Steal My Sunshine'", 
+            "foto": "../images/amarillo2.png", 
+            "fotohover": "../images/amarillo.png",
+            "cantidad": 1
+    },
+    {
+            "id": 5, 
+            "color": "Verde", 
+            "precio": 2800, 
+            "nombre": "'Kowabunga'", 
+            "foto": "../images/verde1.jpeg", 
+            "fotohover": "../images/verde.png",
+            "cantidad": 1
+    },
+    {
+            "id": 6, 
+            "color": "Azul", 
+            "precio": 2800, 
+            "nombre": "'Blue Ruin'", 
+            "foto": "../images/azul2.png", 
+            "fotohover": "../images/azul.png",
+            "cantidad": 1
+    },
+    {
+            "id": 7, 
+            "color": "Violeta", 
+            "precio": 2800, 
+            "nombre": "'PPL Eater'", 
+            "foto": "../images/purpura2.png", 
+            "fotohover": "../images/purpura.png",
+            "cantidad": 1
+    },
+    {
+            "id": 8, 
+            "color": "Celeste", 
+            "precio": 2800, 
+            "nombre": "'Narwhal'", 
+            "foto": "../images/celeste1.png", 
+            "fotohover": "../images/celeste.png",
+            "cantidad": 1
+    },
+    {
+            "id": 9, 
+            "color": "Rosa pastel", 
+            "precio": 3200, 
+            "nombre": "'Pink Puff'", 
+            "foto": "../images/pink2.png", 
+            "fotohover": "../images/pink.png",
+            "cantidad": 1
+    },
+    {
+            "id": 10, 
+            "color": "Lila pastel", 
+            "precio": 3200, 
+            "nombre": "'Stoned Pony'", 
+            "foto": "../images/lila2.png", 
+            "fotohover": "../images/lila.png"
+            ,"cantidad": 1
+    },
+    {
+            "id": 11, 
+            "color": "Naranja pastel", 
+            "precio": 3200, 
+            "nombre": "'Peach Fuzz'", 
+            "foto": "../images/naranjapastel1.png", 
+            "fotohover": "../images/naranjapastel.png",
+            "cantidad": 1
+    },
+    {
+            "id": 12, 
+            "color": "Verde Pastel", 
+            "precio": 3200, 
+            "nombre": "'Wondermint'", 
+            "foto": "../images/verdepastel1.png", 
+            "fotohover": "../images/verdepastel.png",
+            "cantidad": 1
+    }
+]   

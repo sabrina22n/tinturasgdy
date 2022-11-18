@@ -1,45 +1,11 @@
-//creo el array con el stock de productos
-const stockProductos = [
-        {
-                id: 1, color: "Rojo", precio: 2800, nombre: "'Rock Lobster'", foto: "../images/rojo1.jpeg", fotohover: "../images/rojo.png"
-        },
-        {
-                id: 2, color: "Fucsia", precio: 2800, nombre: "'EX-Girl'", foto: "../images/fucsia1.jpeg", fotohover: "../images/fucsia.jpeg"
-        },
-        {
-                id: 3, color: "Naranja", precio: 2800, nombre: "'Riot'", foto: "../images/riot2.png", fotohover: "../images/riot.png"
-        },
-        {
-                id: 4, color: "Amarillo", precio: 2800, nombre: "'Steal My Sunshine'", foto: "../images/amarillo2.png", fotohover: "../images/amarillo.png"
-        },
-        {
-                id: 5, color: "Verde", precio: 2800, nombre: "'Kowabunga'", foto: "../images/verde1.jpeg", fotohover: "../images/verde.png"
-        },
-        {
-                id: 6, color: "Azul", precio: 2800, nombre: "'Blue Ruin'", foto: "../images/azul2.png", fotohover: "../images/azul.png"
-        },
-        {
-                id: 7, color: "Violeta", precio: 2800, nombre: "'PPL Eater'", foto: "../images/purpura2.png", fotohover: "../images/purpura.png"
-        },
-        {
-                id: 8, color: "Celeste", precio: 2800, nombre: "'Narwhal'", foto: "../images/celeste1.png", fotohover: "../images/celeste.png"
-        },
-        {
-                id: 9, color: "Rosa pastel", precio: 3200, nombre: "'Pink Puff'", foto: "../images/pink2.png", fotohover: "../images/pink.png"
-        },
-        {
-                id: 10, color: "Lila pastel", precio: 3200, nombre: "'Stoned Pony'", foto: "../images/lila2.png", fotohover: "../images/lila.png"
-        },
-        {
-                id: 11, color: "Naranja pastel", precio: 3200, nombre: "'Peach Fuzz'", foto: "../images/naranjapastel1.png", fotohover: "../images/naranjapastel.png"
-        },
-        {
-                id: 12, color: "Verde Pastel", precio: 3200, nombre: "'Wondermint'", foto: "../images/verdepastel1.png", fotohover: "../images/verdepastel.png"
-        },
-];
-
-//array vacio para carrito
-let carrito = [];
+let productosJSON = [];
+let totalCarrito;
+let botonFinalizar = document.getElementById("finalizar");
+let carrito = JSON.parse(localStorage.getItem("elcarrito")) || [];
+if (carrito.length != 0) {
+        cargarLocalStorage();
+}
+obtenerDolar();
 
 //TOMO LAS CARDS DEL HTML
 const tarjetas = document.getElementById("tarjetas")
@@ -47,10 +13,39 @@ const tarjetas = document.getElementById("tarjetas")
 //TOMO EL BOTON PARA FINALIZAR COMPRA
 const btnShop = document.getElementById("btnShop");
 
-//CREO LAS TARJETAS Y ARMO LA FUNCION PARA AGREGAR AL CARRITO
+//LUXON
+const DateTime = luxon.DateTime;
+const inicio = DateTime.now();
+
+//CARGAR LOCAL STORAGE
+function cargarLocalStorage() {
+        Swal.fire({
+                title: 'Tu compra está esperando!',
+                text: 'vuelve al carrito de compras',
+                width: 400,
+                showConfirmButton: false,
+                timer: 3000,
+                color: `#000000`,
+        })
+        for (const producto of carrito) {
+                document.getElementById("tBody").innerHTML += `
+                        <tr>
+                        <td>${producto.nombre.toUpperCase()}</td>
+                        <td>$${producto.precio}</td>
+                        <td>${producto.cantidad}</td>
+                        <td><button id='btnBorrar${producto.id}' class="btn btn-ligth"><i class="fa-solid fa-trash-can"></i></button></td>
+                        </tr>
+                        `;
+                let totalCarrito = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
+                document.getElementById("totalPagar").innerText = `Total a pagar c/IVA incluido: $ ${totalCarrito * 1.21}`;
+        }
+}
+cargarCarrito();
+
+//CREO LAS TARJETAS 
 
 function tarjetasProductos() {
-        for (const producto of stockProductos) {
+        for (const producto of productosJSON) {
                 tarjetas.innerHTML += `
 <div class="col">
         <div class= "card card-body-shop borderimg"
@@ -76,46 +71,142 @@ function tarjetasProductos() {
         </div>
 </div>
 `;
-        };
-        stockProductos.forEach((producto) => {
-                document.getElementById(`btn${producto.id}`).addEventListener("click", function () {
-                        agregarCarrito(producto);
-                });
+        }
+        productosJSON.forEach((producto) => {
+                document
+                        .getElementById(`btnComprar${producto.id}`)
+                        .addEventListener("click", () => {
+                                agregarCarrito(producto);
+                        });
         });
 }
-tarjetasProductos();
 
 
-//cargar carrito
-function agregarCarrito(productoComprar) {
-        carrito.push(productoComprar);
-        //guardar en json y luego al localstorage
-        const jsonStorage = (clave, valor) => { localStorage.setItem(clave, valor) };
-        jsonStorage(`listaProductos`, JSON.stringify(productoComprar));
-        console.log(jsonStorage)
-        //traer del storage y luego al json
-        const storageJson = JSON.parse(localStorage.getItem(`listaProductos`));
-        console.log(storageJson);
-
-document.getElementById("tBody").innerHTML += `
-<tr>
-    <td>${productoComprar.nombre}</td>
-    <td>${productoComprar.precio}</td>
-    <td><button id='btn${
-        productoComprar.id
-    }' class="btn btn-ligth"><i class="fa-solid fa-trash-can"></i></button></td>
-</tr>
-`;
-let totalCarrito = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
-document.getElementById("totalPagar").innerText = `Total a pagar c/IVA incluido: $ ${totalCarrito * 1.21}`;
+//cotizacion dolar
+function obtenerDolar() {
+        const URLDOLAR = "https://api.bluelytics.com.ar/v2/latest";
+        fetch(URLDOLAR)
+                .then(respuesta => respuesta.json())
+                .then(cotizaciones => {
+                        const dolarBlue = cotizaciones.blue;
+                        console.log(dolarBlue);
+                        document.getElementById("cotizacionDolar").innerHTML += `
+                        <p>Dolar compra $${dolarBlue.value_buy} | Dolar venta $${dolarBlue.value_sell}</p>
+                `;
+                        dolarCompra = dolarBlue.value_buy;
+                        obtenerJSON();
+                })
+                .catch(error => console.log("error"))
 }
 
+//GETJSON de productos.json
+async function obtenerJSON() {
+        const urlJSON = "../mock/productos.json";
+        const resp = await fetch(urlJSON);
+        const data = await resp.json();
+        productosJSON = data;
+        //dolar y productos lanzo funcion
+        tarjetasProductos();
+}
 
+//agregar productos al carrito
+const agregarCarrito = (productoComprar) => {
+        let estaProducto = carrito.some(existe => existe.id === productoComprar.id)
+        //Sweet alert
+        Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: productoComprar.nombre,
+                text: 'agregado al carrito!',
+                showConfirmButton: false,
+                timer: 1500,
+                color: '#000000'
+        });
+        if (estaProducto === false) {
+                carrito.push(productoComprar);
+        } else {
+                let productoComprarFind = carrito.find(productoComprarFind => productoComprarFind.id === productoComprar.id);
+                productoComprarFind.cantidad++;
+                productoComprarFind.precio = productoComprarFind.precio * productoComprarFind.cantidad;
+        }
+        cargarCarrito()
+}
+
+//renderizar en la tabla los productos agregados al carrito
+function cargarCarrito() {
+        document.getElementById("tBody").innerHTML = ``;
+        carrito.forEach((productoComprar) => {
+                document.getElementById("tBody").innerHTML += `
+        <tr>
+        <td>${productoComprar.nombre}</td>
+        <td>${productoComprar.precio}</td>
+        <td><button id='btnBorrar${productoComprar.id}' class="btn btn-ligth"><i class="fa-solid fa-trash-can"></i></button></td>
+        </tr>
+        `;
+                let totalCarrito = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
+                document.getElementById("totalPagar").innerText = `Total a pagar c/IVA incluido: $ ${totalCarrito * 1.21}`;
+        });
+        localStorage.setItem("elcarrito", JSON.stringify(carrito));
+        borrarProducto();
+}
+
+//crear evento para cada boton borrar
+function borrarProducto() {
+        carrito.forEach((productoSacar) => {
+                document
+                        .getElementById(`btnBorrar${productoSacar.id}`)
+                        .addEventListener("click", () => {
+                                carrito = carrito.filter(productoSacarFilter => productoSacarFilter.id !== productoSacar.id);
+                                //Sweet alert
+                                Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'El producto se quitó del carrito',
+                                        showConfirmButton: false,
+                                        timer: 3000,
+                                        color: '#000000',
+                                })
+                                if (carrito.length == 0) {
+                                        document.getElementById("totalPagar").innerText = "";
+                                }
+                                cargarCarrito();
+                        });
+        });
+}
+
+//finalizar boton compra
 btnShop.onclick = () => {
-        carrito = [];
-        document.getElementById("tBody").innerHTML = "";
-        document.getElementById("totalPagar").innerText = "";
-        localStorage.clear();
-        sessionStorage.clear();
-        console.clear();
+        if (carrito.length == 0) {
+                Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'LO SENTIMOS',
+                        text: "Tu carrito está vacío, no es posible realizar la compra.",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        color: '#000000',
+
+                })
+        } else {
+                carrito = [];
+                document.getElementById("tBody").innerHTML = "";
+                document.getElementById("totalPagar").innerText = "";
+                localStorage.removeItem("elcarrito");
+                sessionStorage.clear();
+                console.clear();
+                //LUXON
+                const fin = DateTime.now();
+                const entrega = fin.plus({ days: 2 });
+                console.log(entrega.toLocaleString(DateTime.DATETIME_SHORT));
+                //SWEET ALERT
+                Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Gracias por tu compra!',
+                        text: "Recibirás tu pedido el día " + entrega.toLocaleString(DateTime.DATETIME_SHORT),
+                        showConfirmButton: false,
+                        timer: 3000,
+                        color: '#000000',
+                })
+        }
 }
