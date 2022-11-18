@@ -161,6 +161,130 @@ footer {
     border: 3px solid #000000;
 }
 
+.cardRojo {
+    background-color: #F22A35;
+}
+
+.cardRojo:hover{
+    background-image: url(../images/rojo.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardFucsia {
+    background-color: #F22B90;
+}
+
+.cardFucsia:hover{
+    background-image: url(../images/fucsia.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardNaranja {
+    background-color: #FF522D;
+}
+
+.cardNaranja:hover{
+    background-image: url(../images/riot.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardAmarillo {
+    background-color: #FBFE56;
+}
+
+.cardAmarillo:hover{
+    background-image: url(../images/amarillo.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardVerde {
+    background-color: #01CD0D;
+}
+
+.cardVerde:hover{
+    background-image: url(../images/verde.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardAzul {
+    background-color: #0056FC;
+}
+
+.cardAzul:hover{
+    background-image: url(../images/azul.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardVioleta {
+    background-color: #8A00E3;
+}
+
+.cardVioleta:hover{
+    background-image: url(../images/purpura.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardCeleste {
+    background-color: #00B6B8;
+}
+
+.cardCeleste:hover{
+    background-image: url(../images/celeste.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardRosa {
+    background-color: #FF8AA5;
+}
+
+.cardRosa:hover{
+    background-image: url(../images/pink.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardLila {
+    background-color: #C096E5;
+}
+
+.cardLila:hover{
+    background-image: url(../images/lila.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardNaranjap {
+    background-color: #FFC37A;
+}
+
+.cardNaranjap:hover{
+    background-image: url(../images/naranjapastel.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.cardVerdep{
+    background-color: #0EFFA9;
+}
+
+.cardVerdep:hover{
+    background-image: url(../images/verdepastel.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.tBody{
+font-family: 'Questrial', sans-serif;
+}
+
 @media screen and (max-width: 768px) {
     
     .brand1 {
