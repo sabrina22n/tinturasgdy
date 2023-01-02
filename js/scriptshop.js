@@ -82,7 +82,7 @@ function tarjetasProductos() {
 
 
 //cotizacion dolar
-function obtenerDolar() {
+/* function obtenerDolar() {
         const URLDOLAR = "https://api.bluelytics.com.ar/v2/latest";
         fetch(URLDOLAR)
                 .then(respuesta => respuesta.json())
@@ -96,7 +96,7 @@ function obtenerDolar() {
                         obtenerJSON();
                 })
                 .catch(error => console.log("error"))
-}
+} */
 
 //GETJSON de productos.json
 async function obtenerJSON() {
