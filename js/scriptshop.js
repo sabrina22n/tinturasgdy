@@ -210,3 +210,4 @@ btnShop.onclick = () => {
                 })
         }
 }
+
